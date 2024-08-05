@@ -11,7 +11,7 @@
 
 - Text file
 - Elements from content files will be filled in by the 🍄 preprocessor.
-- Target area marked between 🍄 markers. Right after the left 🍄, put the content filename. **e** represent the element on each line 
+- Target area marked between 🍄 markers. Right after the left 🍄, put the content filename. **$** represent the element on each line 
 
 # Simple example :
 

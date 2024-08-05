@@ -15,11 +15,30 @@ def get_current_date(comment: str) -> str:
     return comment+" 🍄 "+(datetime.now().strftime("%Y-%m-%d %H:%M"))+"\n\n"
 
 def compute_replacement(match: str) -> str:
-    content_filename = match.split()[0]
-    with open(content_filename, 'r') as content:
-        li = content.readlines()
+    content_filename = ""
+    output = ""
+    li = match.split()
+    try:
+        content_filename = li[0]
+    except:
+        return ""
+    
+    content_without_filename = "".join(li[:1])
+    print("====")
+    print(content_filename)
+    print("====")
+    if "$" not in match:
+        with open(content_filename, 'r') as content:
+            return content.read()
+    try:
+        before_element, after_element = content_without_filename.split("$")
         
+        with open(content_filename, 'r') as content:
+            for l in content.readlines():
+                output += before_element+l+after_element
 
+    finally:
+        return output
 
 
 def extract_content(input_file: str, output_file: str) -> None:
